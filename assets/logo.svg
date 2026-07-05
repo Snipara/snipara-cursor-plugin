@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Snipara</title>
+  <desc id="desc">Snipara project memory logo</desc>
+  <rect width="256" height="256" rx="48" fill="#101316"/>
+  <path d="M57 73c0-13.3 10.7-24 24-24h94c13.3 0 24 10.7 24 24v110c0 13.3-10.7 24-24 24H81c-13.3 0-24-10.7-24-24V73z" fill="#f4f1e8"/>
+  <path d="M84 87h88M84 119h88M84 151h54" stroke="#101316" stroke-width="14" stroke-linecap="round"/>
+  <path d="M157 151l22 22 33-49" fill="none" stroke="#2f8f6d" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

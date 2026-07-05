@@ -1,0 +1,12 @@
+---
+description: Use Snipara as the project memory and source-backed context layer for Cursor agents.
+alwaysApply: true
+---
+
+snipara-memory:
+
+- When the user asks about prior project decisions, preferences, workflows, or reusable context, use the Snipara MCP tools before guessing from chat memory.
+- Prefer the simple Snipara discovery path first: call `snipara_help` for tool guidance when the exact tool is unclear.
+- Use source-backed context for repository questions when available; cite the files or memories returned by Snipara in the answer.
+- At the end of substantial work, persist durable outcomes through Snipara only when they are reusable: decisions, workflows, architectural rationale, validated troubleshooting, or stable user preferences.
+- Never store secrets, tokens, private keys, raw credentials, or one-off transient command noise in Snipara memory.

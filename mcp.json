@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "snipara": {
+      "url": "https://api.snipara.com/mcp/snipara",
+      "headers": {
+        "Authorization": "Bearer ${env:RLM_API_KEY}"
+      }
+    }
+  }
+}
