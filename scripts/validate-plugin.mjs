@@ -57,6 +57,7 @@ if (authHeader !== "Bearer ${env:SNIPARA_API_KEY}") {
 }
 
 const skillPaths = [
+  "skills/start-in-60-seconds/SKILL.md",
   "skills/first-work-brief/SKILL.md",
   "skills/project-memory/SKILL.md",
   "skills/end-of-task-memory/SKILL.md",

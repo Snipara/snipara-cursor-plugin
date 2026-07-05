@@ -1,8 +1,8 @@
 {
   "name": "snipara",
   "displayName": "Snipara",
-  "version": "0.1.0",
-  "description": "Project memory and source-backed context for Cursor agents through the hosted Snipara MCP server.",
+  "version": "0.1.1",
+  "description": "Project memory, 60-second local setup, and source-backed context for Cursor agents.",
   "author": {
     "name": "Snipara",
     "email": "contact@snipara.com"
@@ -19,7 +19,9 @@
     "agent-memory",
     "project-context",
     "source-backed-retrieval",
-    "first-work-brief"
+    "first-work-brief",
+    "create-snipara",
+    "local-first"
   ],
   "category": "developer-tools",
   "tags": [
