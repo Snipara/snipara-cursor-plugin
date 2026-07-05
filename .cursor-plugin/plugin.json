@@ -1,7 +1,7 @@
 {
   "name": "snipara",
   "displayName": "Snipara",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Project memory, 60-second local setup, and source-backed context for Cursor agents.",
   "author": {
     "name": "Snipara",
@@ -21,16 +21,19 @@
     "source-backed-retrieval",
     "first-work-brief",
     "create-snipara",
-    "local-first"
+    "local-first",
+    "hooks"
   ],
   "category": "developer-tools",
   "tags": [
     "mcp",
     "memory",
     "agents",
-    "context"
+    "context",
+    "hooks"
   ],
   "skills": "./skills/",
   "rules": "./rules/",
+  "hooks": "./hooks/hooks.json",
   "mcpServers": "./mcp.json"
 }

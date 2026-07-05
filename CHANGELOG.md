@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3] - 2026-07-05
+
+### Added
+
+- Native Cursor hooks for Snipara lifecycle guidance: session start, shell guard for commit/push/publish commands, and session stop memory reminder.
+- Hook validation for `hooks/hooks.json` and referenced scripts.
+
 ## [0.1.2] - 2026-07-05
 
 ### Changed

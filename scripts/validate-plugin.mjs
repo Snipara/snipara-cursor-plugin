@@ -48,7 +48,7 @@ if (packageJson?.version && manifest.version !== packageJson.version) {
   fail("manifest version must match package.json version");
 }
 
-for (const pathField of ["skills", "rules", "mcpServers", "logo"]) {
+for (const pathField of ["skills", "rules", "hooks", "mcpServers", "logo"]) {
   const value = manifest[pathField];
   if (typeof value === "string" && !existsSync(resolve(root, value))) {
     fail(`${pathField} path does not exist: ${value}`);
@@ -67,6 +67,35 @@ if (mcp?.mcpServers?.snipara?.url !== HOSTED_MCP_URL) {
 const authHeader = mcp?.mcpServers?.snipara?.headers?.Authorization;
 if (authHeader !== "Bearer ${env:SNIPARA_API_KEY}") {
   fail("mcp.json must reference SNIPARA_API_KEY without hardcoding secrets");
+}
+
+const hooks = readJson(resolve(root, "hooks/hooks.json"));
+if (!hooks?.hooks || typeof hooks.hooks !== "object") {
+  fail("hooks/hooks.json must define hooks");
+}
+
+const requiredHooks = ["sessionStart", "beforeShellExecution", "stop"];
+for (const hookName of requiredHooks) {
+  if (!Array.isArray(hooks?.hooks?.[hookName]) || hooks.hooks[hookName].length === 0) {
+    fail(`hooks/hooks.json must define ${hookName}`);
+  }
+}
+
+for (const [hookName, entries] of Object.entries(hooks?.hooks ?? {})) {
+  if (!Array.isArray(entries)) {
+    fail(`hooks.${hookName} must be an array`);
+    continue;
+  }
+  for (const entry of entries) {
+    if (!entry?.command || typeof entry.command !== "string") {
+      fail(`hooks.${hookName} entry must include command`);
+      continue;
+    }
+    const scriptMatch = entry.command.match(/(?:node\s+)?(\.\/scripts\/[^\s]+)/);
+    if (scriptMatch && !existsSync(resolve(root, scriptMatch[1]))) {
+      fail(`hooks.${hookName} references missing script: ${scriptMatch[1]}`);
+    }
+  }
 }
 
 const skillPaths = [
@@ -133,6 +162,7 @@ for (const artifactHint of artifactHints) {
 const publicFiles = [
   "README.md",
   "mcp.json",
+  "hooks/hooks.json",
   "rules/snipara-memory.mdc",
   ...skillPaths,
   "docs/CURSOR_MARKETPLACE_SUBMISSION.md",

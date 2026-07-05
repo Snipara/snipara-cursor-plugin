@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "node ./scripts/snipara-session-start.mjs"
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": "node ./scripts/snipara-shell-guard.mjs",
+        "matcher": "git commit|git push|npm publish|vsce publish|ovsx publish|pnpm run publish|npm run publish"
+      }
+    ],
+    "stop": [
+      {
+        "command": "node ./scripts/snipara-session-stop.mjs"
+      }
+    ]
+  }
+}

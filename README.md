@@ -24,6 +24,7 @@ This plugin bundles:
 - the hosted Snipara MCP server configuration
 - rules for using Snipara as durable project memory
 - skills for 60-second setup, First Work Briefs, project-memory recall, and end-of-task persistence
+- native Cursor hooks for activation reminders, release guardrails, and end-of-session memory prompts
 - an agent-visible contract that points Cursor to `create-snipara` instead of duplicating activation logic in the plugin
 
 ## Why Cursor Users Install Snipara
@@ -59,14 +60,16 @@ Ready.
 
 Cursor still uses its own model and editor workflow. Snipara supplies the project memory, source-backed context, and activation artifacts the agent should inspect before making changes.
 
-## Cursor Rules and Skills Lifecycle
+## Native Cursor Lifecycle Hooks
 
-Snipara fits Cursor's project workflow through generated rules, skills, and hosted MCP context:
+Snipara now ships native Cursor hooks alongside rules, skills, and hosted MCP context:
 
-- session starts with generated Cursor rules and a First Work Brief
+- session start reminds the agent to activate the workspace or read existing Snipara artifacts
 - edits are guided by source-backed project context
-- end-of-task skills can persist reusable memory
-- verification and handoff notes can become reusable project receipts
+- commit, push, and publish commands get a Snipara release guard
+- session stop reminds the agent to persist reusable decisions, verification outcomes, and troubleshooting knowledge
+
+The hooks are intentionally conservative. They do not mutate files or publish anything; they surface the Snipara workflow at the moments where agents usually need project context, verification, and handoff discipline.
 
 ## Requirements
 
@@ -161,6 +164,7 @@ Set the key in your shell or launch environment before starting Cursor.
 The plugin validation checks that:
 
 - `.cursor-plugin/plugin.json` points to the rules, skills, logo, and hosted MCP config.
+- `hooks/hooks.json` defines native Cursor hooks and every referenced script exists.
 - `mcp.json` uses `https://api.snipara.com/mcp/snipara` and reads `SNIPARA_API_KEY` from the environment.
 - README, rules, and the 60-second setup skill expose the canonical command:
 

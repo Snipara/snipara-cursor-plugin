@@ -62,7 +62,7 @@ Why Cursor users install Snipara:
 - know code impact before editing
 - start every session with a Work Brief
 
-Cursor workflow integration covers session start, edits, verification, and reusable handoff receipts through generated rules, skills, and hosted MCP context. The plugin does not currently install native Cursor hooks.
+Cursor workflow integration covers session start, edits, verification, and reusable handoff receipts through generated rules, skills, hosted MCP context, and native Cursor hooks.
 
 ## Review Notes
 
@@ -72,6 +72,7 @@ The plugin is a single-plugin Cursor repository with:
 - `mcp.json` using `https://api.snipara.com/mcp/snipara`
 - rules under `rules/`
 - skills under `skills/`
+- hooks under `hooks/` for session start, commit/push/publish guardrails, and end-of-session memory reminders
 - validation that the agent-visible setup path remains `npx create-snipara@latest init --client cursor --starter`
 - no hardcoded secrets
 
