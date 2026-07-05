@@ -30,7 +30,7 @@ mcp, memory, agents, context
 
 ## User Setup
 
-Users need a Snipara API key available as `RLM_API_KEY` before enabling the MCP server.
+Users need a Snipara API key available as `SNIPARA_API_KEY` before enabling the MCP server.
 
 ## Review Notes
 

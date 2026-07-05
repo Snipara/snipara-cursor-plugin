@@ -3,7 +3,7 @@
     "snipara": {
       "url": "https://api.snipara.com/mcp/snipara",
       "headers": {
-        "Authorization": "Bearer ${env:RLM_API_KEY}"
+        "Authorization": "Bearer ${env:SNIPARA_API_KEY}"
       }
     }
   }

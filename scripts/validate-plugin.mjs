@@ -52,8 +52,8 @@ if (!mcp?.mcpServers?.snipara?.url) {
 }
 
 const authHeader = mcp?.mcpServers?.snipara?.headers?.Authorization;
-if (authHeader !== "Bearer ${env:RLM_API_KEY}") {
-  fail("mcp.json must reference RLM_API_KEY without hardcoding secrets");
+if (authHeader !== "Bearer ${env:SNIPARA_API_KEY}") {
+  fail("mcp.json must reference SNIPARA_API_KEY without hardcoding secrets");
 }
 
 const skillPaths = [

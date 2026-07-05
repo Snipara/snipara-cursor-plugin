@@ -11,7 +11,7 @@ This plugin bundles:
 ## Requirements
 
 - Cursor 2.6 or later
-- A Snipara API key exposed as `RLM_API_KEY`
+- A Snipara API key exposed as `SNIPARA_API_KEY`
 
 Do not hardcode API keys in plugin files or `mcp.json`.
 
@@ -35,7 +35,7 @@ The plugin configures:
     "snipara": {
       "url": "https://api.snipara.com/mcp/snipara",
       "headers": {
-        "Authorization": "Bearer ${env:RLM_API_KEY}"
+        "Authorization": "Bearer ${env:SNIPARA_API_KEY}"
       }
     }
   }
