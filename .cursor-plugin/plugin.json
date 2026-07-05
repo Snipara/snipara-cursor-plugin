@@ -1,7 +1,7 @@
 {
   "name": "snipara",
   "displayName": "Snipara",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Project memory, 60-second local setup, and source-backed context for Cursor agents.",
   "author": {
     "name": "Snipara",

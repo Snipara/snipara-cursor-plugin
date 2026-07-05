@@ -5,6 +5,10 @@ alwaysApply: true
 
 snipara-memory:
 
+- To activate Snipara in a Cursor repository, use the shared activation engine:
+  `npx create-snipara@latest init --client cursor --starter`.
+- Do not reimplement activation logic inside the plugin. After bootstrap, read generated local artifacts such as `.cursor/rules/snipara.mdc`, `.snipara/activation/first-work-brief.md`, `.snipara/activation/manifest.json`, and `.snipara/README.md` when they exist.
+- Hosted MCP retrieval and durable reviewed memory require `SNIPARA_API_KEY` in the shell or launch environment before Cursor starts.
 - When the user asks about prior project decisions, preferences, workflows, or reusable context, use the Snipara MCP tools before guessing from chat memory.
 - Prefer the simple Snipara discovery path first: call `snipara_help` for tool guidance when the exact tool is unclear.
 - Use source-backed context for repository questions when available; cite the files or memories returned by Snipara in the answer.

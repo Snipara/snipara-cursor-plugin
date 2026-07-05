@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2] - 2026-07-05
+
+### Changed
+
+- Hardened Cursor rules so agents see the canonical `create-snipara` activation command, generated artifact read order, and hosted `SNIPARA_API_KEY` boundary.
+- Expanded validation to assert the canonical bootstrap command, hosted MCP endpoint, environment-based auth, and absence of legacy local MCP setup references.
+
 ## [0.1.1] - 2026-07-05
 
 ### Added

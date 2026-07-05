@@ -54,6 +54,7 @@ The plugin is a single-plugin Cursor repository with:
 - `mcp.json` using `https://api.snipara.com/mcp/snipara`
 - rules under `rules/`
 - skills under `skills/`
+- validation that the agent-visible setup path remains `npx create-snipara@latest init --client cursor --starter`
 - no hardcoded secrets
 
 Validation:

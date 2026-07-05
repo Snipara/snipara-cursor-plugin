@@ -9,6 +9,7 @@ This plugin bundles:
 - the hosted Snipara MCP server configuration
 - rules for using Snipara as durable project memory
 - skills for 60-second setup, First Work Briefs, project-memory recall, and end-of-task persistence
+- an agent-visible contract that points Cursor to `create-snipara` instead of duplicating activation logic in the plugin
 
 ## Requirements
 
@@ -30,6 +31,13 @@ This generates project-local Cursor rules, Snipara activation artifacts, and a F
 With a free Snipara account, set `SNIPARA_API_KEY` before starting Cursor. The hosted MCP server then adds source-backed retrieval and durable reviewed memory.
 
 This is the Cursor entry point for Snipara's shared activation engine. The plugin does not duplicate the activation logic; it points Cursor agents to the same `create-snipara` bootstrap that generates the local package, rules, activation artifacts, and First Work Brief path.
+
+After bootstrap, Cursor agents should inspect the generated local artifacts before continuing:
+
+- `.cursor/rules/snipara.mdc`
+- `.snipara/activation/first-work-brief.md`
+- `.snipara/activation/manifest.json`
+- `.snipara/README.md`
 
 For local workflow helpers after first value:
 
@@ -90,6 +98,20 @@ Set the key in your shell or launch environment before starting Cursor.
 - `start-in-60-seconds`: bootstrap Snipara locally, then upgrade to hosted memory when a key is available.
 - `project-memory`: recall durable project decisions, preferences, and workflows.
 - `end-of-task-memory`: persist reusable outcomes at the end of substantial work.
+
+## Validation Contract
+
+The plugin validation checks that:
+
+- `.cursor-plugin/plugin.json` points to the rules, skills, logo, and hosted MCP config.
+- `mcp.json` uses `https://api.snipara.com/mcp/snipara` and reads `SNIPARA_API_KEY` from the environment.
+- README, rules, and the 60-second setup skill expose the canonical command:
+
+  ```bash
+  npx create-snipara@latest init --client cursor --starter
+  ```
+
+- No public plugin file references legacy local MCP setup or hardcoded secret placeholders.
 
 ## Publish
 
