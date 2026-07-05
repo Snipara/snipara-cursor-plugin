@@ -2,6 +2,8 @@
 
 Snipara gives Cursor agents a 60-second local setup path, project memory, and source-backed context.
 
+Snipara turns an editor install into a live project context in under a minute. Cursor uses the `create-snipara` bootstrap; VS Code can run the same activation as a native workspace command.
+
 This plugin bundles:
 
 - the hosted Snipara MCP server configuration
@@ -27,6 +29,8 @@ This generates project-local Cursor rules, Snipara activation artifacts, and a F
 
 With a free Snipara account, set `SNIPARA_API_KEY` before starting Cursor. The hosted MCP server then adds source-backed retrieval and durable reviewed memory.
 
+This is the Cursor entry point for Snipara's shared activation engine. The plugin does not duplicate the activation logic; it points Cursor agents to the same `create-snipara` bootstrap that generates the local package, rules, activation artifacts, and First Work Brief path.
+
 For local workflow helpers after first value:
 
 ```bash
@@ -38,6 +42,18 @@ For a no-hosted-API local runtime path:
 ```bash
 npx create-snipara@latest init --client cursor --profile runtime-only --starter
 ```
+
+## One Activation Engine, Multiple Entry Points
+
+Snipara keeps the activation logic centralized instead of rebuilding it per editor.
+
+| Surface | Entry Point | What Users Get |
+|---------|-------------|----------------|
+| Cursor plugin | `create-snipara` bootstrap | Project-local Cursor rules, activation artifacts, First Work Brief path, hosted MCP upgrade with `SNIPARA_API_KEY` |
+| VS Code extension | Native **Snipara: Activate Workspace** command | Workspace doc scan, sign-in when needed, hosted sync, First Work Brief panel, Copilot handoff |
+| `create-snipara` CLI | `npx create-snipara@latest init --client <client> --starter` | Shared activation package for Cursor, Claude Code, Codex, VS Code-compatible clients, and generic MCP clients |
+
+The product promise is the same across surfaces: install Snipara, open your project, and give the agent live project context before it starts work.
 
 ## Local Install
 
