@@ -1,8 +1,23 @@
-# Snipara Cursor Plugin
+# Cursor + Snipara
 
 Snipara gives Cursor agents a 60-second local setup path, project memory, and source-backed context.
 
 Snipara turns an editor install into a live project context in under a minute. Cursor uses the `create-snipara` bootstrap; VS Code can run the same activation as a native workspace command.
+
+```text
+Cursor
+  |
+  v
+Hosted MCP
+  |
+  v
+Project Brain
+  |
+  +-- Work Brief
+  +-- Impact
+  +-- Verification
+  +-- Receipts
+```
 
 This plugin bundles:
 
@@ -10,6 +25,48 @@ This plugin bundles:
 - rules for using Snipara as durable project memory
 - skills for 60-second setup, First Work Briefs, project-memory recall, and end-of-task persistence
 - an agent-visible contract that points Cursor to `create-snipara` instead of duplicating activation logic in the plugin
+
+## Why Cursor Users Install Snipara
+
+- Stop re-explaining the project every session.
+- Reuse reviewed decisions instead of rediscovering them.
+- Know code impact before editing.
+- Start every session with a Work Brief.
+
+## What Changes Inside Cursor?
+
+Before Snipara:
+
+```text
+Implement OAuth.
+
+Cursor starts searching the repository from scratch.
+```
+
+After Snipara:
+
+```text
+Opening Work Brief...
+
+✓ Decisions
+✓ Active work
+✓ Architecture
+✓ Impact
+✓ Verification
+
+Ready.
+```
+
+Cursor still uses its own model and editor workflow. Snipara supplies the project memory, source-backed context, and activation artifacts the agent should inspect before making changes.
+
+## Cursor Rules and Skills Lifecycle
+
+Snipara fits Cursor's project workflow through generated rules, skills, and hosted MCP context:
+
+- session starts with generated Cursor rules and a First Work Brief
+- edits are guided by source-backed project context
+- end-of-task skills can persist reusable memory
+- verification and handoff notes can become reusable project receipts
 
 ## Requirements
 
@@ -58,7 +115,7 @@ Snipara keeps the activation logic centralized instead of rebuilding it per edit
 | Surface | Entry Point | What Users Get |
 |---------|-------------|----------------|
 | Cursor plugin | `create-snipara` bootstrap | Project-local Cursor rules, activation artifacts, First Work Brief path, hosted MCP upgrade with `SNIPARA_API_KEY` |
-| VS Code extension | Native **Snipara: Activate Workspace** command | Workspace doc scan, sign-in when needed, hosted sync, First Work Brief panel, Copilot handoff |
+| VS Code extension | Native **Snipara: Activate Workspace** command | Sign-in when needed, `create-snipara --json`, activation manifest rendering, First Work Brief panel, Copilot handoff |
 | `create-snipara` CLI | `npx create-snipara@latest init --client <client> --starter` | Shared activation package for Cursor, Claude Code, Codex, VS Code-compatible clients, and generic MCP clients |
 
 The product promise is the same across surfaces: install Snipara, open your project, and give the agent live project context before it starts work.

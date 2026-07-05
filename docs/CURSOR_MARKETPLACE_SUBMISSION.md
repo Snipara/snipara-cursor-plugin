@@ -1,4 +1,4 @@
-# Cursor Marketplace Submission
+# Cursor + Snipara Marketplace Submission
 
 Submit at:
 
@@ -42,9 +42,27 @@ Hosted memory and source-backed MCP retrieval require a free Snipara account and
 
 Snipara helps Cursor agents start work with repository-specific context instead of a blank prompt. The plugin includes a 60-second starter path through `create-snipara`, Cursor rules for durable project memory, and skills for First Work Briefs, memory recall, and end-of-task persistence.
 
+```text
+Cursor -> Hosted MCP -> Project Brain -> Work Brief / Impact / Verification / Receipts
+```
+
 Users can begin locally without a paid plan: `create-snipara` generates project-local activation artifacts, Cursor guidance, and a First Work Brief path from the current repository. When users add a free Snipara account and `SNIPARA_API_KEY`, the same Cursor workflow upgrades to hosted MCP retrieval and reviewed memory across sessions.
 
 This helps Cursor users onboard agents faster, preserve project decisions, cite source-backed context, and hand off substantial work with reusable memory instead of repeating repository explanations every time.
+
+What changes inside Cursor:
+
+- before: "Implement OAuth" sends the agent searching from scratch
+- after: Cursor opens a Work Brief with decisions, active work, architecture, impact, and verification context
+
+Why Cursor users install Snipara:
+
+- stop re-explaining the project
+- reuse reviewed decisions
+- know code impact before editing
+- start every session with a Work Brief
+
+Cursor workflow integration covers session start, edits, verification, and reusable handoff receipts through generated rules, skills, and hosted MCP context. The plugin does not currently install native Cursor hooks.
 
 ## Review Notes
 
